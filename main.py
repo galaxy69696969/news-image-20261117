@@ -3,7 +3,7 @@
 
 Writes one image summing up the world news of Tuesday, 17 November 2026
 to /output/entry.png. The image is baked into the repository
-(assets/entry.png) and this program copies it byte-for-byte, so the two
+(assets/entry.png, 1024x1024 PNG) and this program copies it byte-for-byte, so the two
 grading runs produce identical output. Standard library only, no network.
 
 Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
