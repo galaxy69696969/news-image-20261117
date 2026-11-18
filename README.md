@@ -5,7 +5,7 @@ up the world news of Tuesday, 17 November 2026.
 
 ## The image
 
-A newspaper-style front page (`assets/entry.png.b64` — base64 of the rendered PNG, 1024×1024, rendered at
+A newspaper-style front page (`assets/entry.png`, 1024×1024, rendered at
 build time with Pillow — the entry program itself is standard-library only):
 
 - **Lead — War in Ukraine:** Ukraine's missiles and drones destroyed the
@@ -29,8 +29,8 @@ Sources: Reuters, CDC, PAHO (all reporting dated 17 November 2026).
 
 ## How it runs
 
-`main.py` (Python 3.13, standard library only, no network) decodes
-`assets/entry.png.b64` byte-for-byte to `$MAKEFUN_OUTPUT_DIR/entry.png`
+`main.py` (Python 3.13, standard library only, no network) copies
+`assets/entry.png` byte-for-byte to `$MAKEFUN_OUTPUT_DIR/entry.png`
 (default `/output`), so both grading runs write identical bytes.
 
 ```sh

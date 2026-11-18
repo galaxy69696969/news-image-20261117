@@ -3,27 +3,25 @@
 
 Writes one image summing up the world news of Tuesday, 17 November 2026
 to /output/entry.png. The image is baked into the repository
-(assets/entry.png.b64, base64 of the rendered PNG) and this program
-decodes it byte-for-byte, so the two grading runs produce identical
-output. Standard library only, no network.
+(assets/entry.png) and this program copies it byte-for-byte, so the two
+grading runs produce identical output. Standard library only, no network.
 
 Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
     mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 """
 
-import base64
 import os
+import shutil
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-SOURCE = HERE / "assets" / "entry.png.b64"
+SOURCE = HERE / "assets" / "entry.png"
 
 
 def main() -> None:
     out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
     out_dir.mkdir(parents=True, exist_ok=True)
-    data = base64.b64decode(SOURCE.read_text().encode("ascii"))
-    (out_dir / "entry.png").write_bytes(data)
+    shutil.copyfile(SOURCE, out_dir / "entry.png")
 
 
 if __name__ == "__main__":
